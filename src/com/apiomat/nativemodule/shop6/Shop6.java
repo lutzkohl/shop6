@@ -34,7 +34,7 @@ package com.apiomat.nativemodule.shop6;
  * 
  */
 @com.apiomat.nativemodule.Module( description="", 
-         usedModules = { }, securityPermissions = {} )
+         usedModules = { "Basics" }, securityPermissions = {} )
 public class Shop6 implements com.apiomat.nativemodule.IModule
 {
     static com.apiomat.nativemodule.IApplicationConfigProxy APP_CONFIG_PROXY;

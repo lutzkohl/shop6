@@ -26,8 +26,9 @@ package com.apiomat.nativemodule.shop6;
 
 
 import com.apiomat.nativemodule.basics.*;
+import com.apiomat.nativemodule.shop6.*;
 /**
-* Generated class for your Salesman data model
+* Generated default class representing a user in your app
 *
 * DO NOT CHANGE ANY CODE EXCEPT CLASS ANNOTATIONS OR CLASS ATTRIBUTES HERE!
 * EVERYTHING ELSE WILL GET OVERWRITTEN!
@@ -37,11 +38,11 @@ import com.apiomat.nativemodule.basics.*;
 @com.apiomat.nativemodule.Model( moduleName = "Shop6",
     hooksClassNameTransient = "com.apiomat.nativemodule.shop6.SalesmanHooksTransient", 
     hooksClassNameNonTransient = "com.apiomat.nativemodule.shop6.SalesmanHooksNonTransient", 
-    isTransient = false,     requiredUserRoleCreate=com.apiomat.nativemodule.UserRole.User, requiredUserRoleRead=com.apiomat.nativemodule.UserRole.User,
+    isTransient = false,     requiredUserRoleCreate=com.apiomat.nativemodule.UserRole.Guest, requiredUserRoleRead=com.apiomat.nativemodule.UserRole.User,
     requiredUserRoleWrite=com.apiomat.nativemodule.UserRole.Owner, restrictResourceAccess=false,    allowedRolesCreate={}, allowedRolesRead={},
     allowedRolesWrite={}, allowedRolesGrant={}, 
     roleClassesMap={})
-public class Salesman extends com.apiomat.nativemodule.AbstractClientDataModel<com.apiomat.nativemodule.shop6.Salesman> implements com.apiomat.nativemodule.IModel<com.apiomat.nativemodule.shop6.Salesman>
+public class Salesman extends com.apiomat.nativemodule.basics.User
 {
     /**
      * Contains the name of the module that this model belongs to
@@ -53,6 +54,8 @@ public class Salesman extends com.apiomat.nativemodule.AbstractClientDataModel<c
     public static final String MODEL_NAME = "Salesman";
 
     /** class specific attributes */
+    private java.util.List<com.apiomat.nativemodule.shop6.Lead> listOfLeads = new java.util.ArrayList<com.apiomat.nativemodule.shop6.Lead>();
+    private double[] salesArea;
     /**
      * Protected constructor; to create a new instance, use the createObject() method
      */
@@ -75,6 +78,80 @@ public class Salesman extends com.apiomat.nativemodule.AbstractClientDataModel<c
     public String getModelName( )
     {
         return MODEL_NAME;
+    }
+
+    public java.util.List<com.apiomat.nativemodule.shop6.Lead> getListOfLeads() 
+    {
+        if(this.listOfLeads == null || this.listOfLeads.size() == 0)
+        {
+            /* do this by reflection to be backward compatible */
+            try
+            {
+                java.lang.reflect.Method m = com.apiomat.nativemodule.AbstractClientDataModel.class.getMethod( "loadReferences", String.class,  Class.class );
+                this.listOfLeads =  ( java.util.List<com.apiomat.nativemodule.shop6.Lead> ) m.invoke( this, "listOfLeads", com.apiomat.nativemodule.shop6.Lead.class );
+            }
+            catch ( java.lang.NoSuchMethodException | java.lang.SecurityException | java.lang.IllegalAccessException | java.lang.IllegalArgumentException | java.lang.reflect.InvocationTargetException e )
+            {
+                //silently ignored
+            }
+        }   
+        return this.listOfLeads;
+    }
+
+    public void postListOfLeads( final com.apiomat.nativemodule.shop6.Lead refData )
+    {
+        addReference( "listOfLeads", refData );
+        this.listOfLeads.add( refData );
+    }
+
+    public void removeListOfLeads( final com.apiomat.nativemodule.shop6.Lead refData )
+    {
+        removeReference( "listOfLeads", refData );
+        this.listOfLeads.remove( refData );
+    }
+
+    public double getSalesAreaLatitude( )
+    {
+         return this.salesArea !=null && this.salesArea.length > 0 ? this.salesArea[0] : 0;
+    }
+
+    public double getSalesAreaLongitude( )
+    {
+         return this.salesArea !=null && this.salesArea.length > 1 ? this.salesArea[1] : 0;
+    }
+
+    public void setSalesAreaLatitude( double latitude )
+    {
+        if( this.salesArea == null )
+        {
+            this.salesArea = new double[]{};
+        }
+
+        if ( this.salesArea.length < 2 )
+        {
+            this.salesArea = new double[]{ latitude, 0 };
+        }
+        else
+        {
+            this.salesArea[0] = latitude;
+        }
+    }
+
+    public void setSalesAreaLongitude( double longitude )
+    {
+        if( this.salesArea == null )
+        {
+            this.salesArea = new double[]{};
+        }
+
+        if ( this.salesArea.length < 2 )
+        {
+            this.salesArea = new double[]{ 0, longitude };
+        }
+        else
+        {
+            this.salesArea[1] = longitude;
+        }
     }
 
 }
