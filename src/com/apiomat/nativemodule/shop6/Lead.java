@@ -63,6 +63,7 @@ public class Lead extends com.apiomat.nativemodule.AbstractClientDataModel<com.a
     private String profilePicURL;
     private double[] regPlace;
     private String score = null;
+    private String score2 = null;
     /**
      * Protected constructor; to create a new instance, use the createObject() method
      */
